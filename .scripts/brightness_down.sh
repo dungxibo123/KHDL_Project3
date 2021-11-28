@@ -1,0 +1,2 @@
+brightnessctl s 5%-
+

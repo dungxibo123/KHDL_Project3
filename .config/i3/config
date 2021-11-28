@@ -1,0 +1,366 @@
+# Color used
+set $darker                                                                     #1d2021
+set $dark                                                                       #282828
+set $light                                                                      #ebdbb2
+set $lighter                                                                    #fcb2c7
+set $grey                                                                       #665c54
+set $lightgrey                                                                  #d5c4a1
+set $green                                                                      #fab12a
+set $yellow                                                                     #d7cf21
+set $orange                                                                     #fe8019
+set $red                                                                        #cc241d
+#[class="urxvt" title="VIM"]
+# No title
+new_window none
+#jjjjjjj
+#hide_edge_borders both
+#default_border none
+
+# Disable mouse focus
+focus_follows_mouse no
+
+# Set mod key
+set                                                                             $mod Mod1
+font pango:Noto Sans, Font Awesome 5 Free 9
+font pango:SomeFont 0
+floating_modifier                                                               $mod
+
+# Use pactl to adjust volume in PulseAudio.
+bindsym XF86AudioRaiseVolume 																	exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2% 
+bindsym XF86AudioLowerVolume 																	exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2% 
+bindsym XF86AudioMute 																      	exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle 
+bindsym XF86AudioMicMute                                      exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+
+# Start terminal
+#bindsym $mod+Return exec call_new_terminal
+bindsym $mod+Return 																					exec alacritty --working-directory $(xcwd)
+#~/.cache/wal/colors.sh
+#bindsym $mod+Return exec urxvt -e "cd $(xcwd)"
+#bindsym $mod+Return exec "st -e ST_PATH='$(xcwd)'"
+
+bindsym Control+Shift+y 																			exec "i3-msg workspace number 1; brave google.com"
+bindsym Control+Shift+a 																			exec "i3-msg workspace number 2; alacritty --working-directory $(xcwd) --command vim" 
+# Kill focused window with Alt+Q
+bindsym Mod1+q 																								kill
+# Change focus
+bindsym $mod+h                                                focus left
+bindsym $mod+j                                                focus down
+bindsym $mod+k                                                focus up
+bindsym $mod+l                                                focus right
+
+# Alternatively, you can use the cursor keys:
+bindsym $mod+Left                                             focus left
+bindsym $mod+Down 																						focus down
+bindsym $mod+Up															                  focus up
+bindsym $mod+Right                                            focus right
+
+
+
+## Clipboard Screenshots
+bindsym Print                                                 exec --no-startup-id maim | xclip -selection clipboard -t image/png
+bindsym $mod+Print                                            exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
+bindsym $mod+u 																								exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
+#bindsym $mod+Shift+Print focus right
+#bindsym $mod + u                                              exec --no-startup-id maim --select "$HOME/Pictures/$(date).png"
+bindsym Ctrl+Print                                            exec --no-startup-id maim ~/Pictures/$(date +%s).png
+bindsym Ctrl+Shift+u                                          exec --no-startup-id maim --select "$HOME/Pictures/$(date).png"
+#bindsym $mod + u                                              exec --no-startup-id maim --select "~/Desktop/Math courses/Multivariate Calculus/Pictures/math$(ls ~/Desktop/Math courses/Multivariate Calculus/Pictures | wc -l)"
+
+# Move focused window
+bindsym $mod+Shift+h 																					move left
+bindsym $mod+Shift+j 																					move down
+bindsym $mod+Shift+k 																					move up
+bindsym $mod+Shift+l 																					move right
+
+# Alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left 																			move left
+bindsym $mod+Shift+Down 																			move down
+bindsym $mod+Shift+Up 																				move up
+bindsym $mod+Shift+Right 																			move right
+
+# Split 
+bindsym $mod+w 																								split h
+bindsym $mod+Shift+w 																					split v
+
+# Enter fullscreen mode for the focused container
+bindsym $mod+f 																								fullscreen toggle
+
+# Change container layout (stacked, tabbed, toggle split, floating)
+bindsym $mod+s 																								layout stacking
+bindsym $mod+t 																								layout tabbed
+bindsym $mod+e 																								layout toggle split
+bindsym $mod+Shift+space 																			floating toggle
+
+# Change focus between tiling / floating windows
+bindsym $mod+space 																						focus mode_toggle
+
+# Focus the parent/child container
+bindsym $mod+a 																								focus parent
+bindsym $mod+c 																								focus child
+
+
+
+
+
+# Workspaces
+set $ws1 																											"Browser"
+set $ws2 																											"Code"
+set $ws3 																											"Book"
+set $ws4 																											"Video"
+set $ws5 																											"Library"
+set $ws6 																											"Word"
+set $ws7 																											"Setting"
+set $ws8 																											"Task"
+set $ws9 																											"Random"
+set $ws10 																										"Monitor"
+
+#rename workspace
+# Switch to workspace
+bindsym $mod+1 																								workspace $ws1
+bindsym $mod+2 																								workspace $ws2
+bindsym $mod+3 																								workspace $ws3
+bindsym $mod+4 																								workspace $ws4
+bindsym $mod+5 																								workspace $ws5
+bindsym $mod+6 																								workspace $ws6
+bindsym $mod+7																				     	  workspace $ws7
+bindsym $mod+8 																								workspace $ws8
+bindsym $mod+9 																								workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 																					move container to workspace $ws1
+bindsym $mod+Shift+2 																					move container to workspace $ws2
+bindsym $mod+Shift+3 																					move container to workspace $ws3
+bindsym $mod+Shift+4 																					move container to workspace $ws4
+bindsym $mod+Shift+5 																					move container to workspace $ws5
+bindsym $mod+Shift+6 																					move container to workspace $ws6
+bindsym $mod+Shift+7 																					move container to workspace $ws7
+bindsym $mod+Shift+8 																					move container to workspace $ws8
+bindsym $mod+Shift+9 																					move container to workspace $ws9
+bindsym $mod+Shift+0 																					move container to workspace $ws10
+
+# Assign applications in workspace
+assign [class="Thunderbird"] $ws10
+assign [class="brave"] $ws1
+assign [class="firefox"] $ws1
+
+assign [class="Brave"] $ws1
+assign [class="subl"] $ws2
+assign [class="vim"] $ws2
+assign [class="TelegramDesktop"] $w8
+assign [class="zoom"] $ws4
+assign [class="wpspdf"] $ws6
+assign [class="calibre"] $ws5
+assign [title="Google Chrome$"] $ws10
+assign [title="Microsoft Teams$"] $ws4
+assign [title="WPS PDF$"] $ws3
+assign [title="Discord$"] $ws4
+assign [title="Notion Desktop"] $ws8
+
+
+# Default workspace layout  
+#for_window [workspace=$ws10]                                     layout tabbed
+#for_window [workspace=$ws8] layout tabbed
+for_window [workspace=$ws2] 																			floating enable
+for_window [workspace=$ws5] 																			layout tabbed
+for_window [workspace=$ws1] 																			layout tabbed
+for_window [class=".*"] 																			    title_format "<span alpha='1'>%title</span>"
+for_window [class="vim"]                                          move to workspace $ws2
+for_window [title="calcurse"]                                     move to workspace $ws8
+#for_window [class=".*"]                                           border pixel 5
+for_window [class="Alacritty"]                                    border pixel 5
+
+# System controls
+bindsym --release $mod+x 																					exec slock 
+bindsym --release $mod+Shift+x 																		exec systemctl suspend
+bindsym --release $mod+Shift+Escape 															exec systemctl reboot
+bindsym --release $mod+Escape 																		exec systemctl poweroff
+
+# Lock
+exec --no-startup-id xss-lock --transfer-sleep-lock -- slock 
+# exec betterlockscreen -u ~/Pictures/gruvbox_wp.png
+
+# Reload the configuration file
+bindsym $mod+Shift+c 																							reload
+# Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r 																							restart
+# Exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e 																							exec i3-msg exit
+# resize window (you can also use the mouse for that)
+
+
+# Disable window titlebars entirely
+#for_window [class="^.*"] border pixel 2
+
+# Set inner/outer gaps
+gaps inner 15
+#gaps outer 15
+
+# Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
+# gaps inner|outer current|all set|plus|minus <px>
+#gaps inner all set 10
+#gaps outer all set 15
+
+# Smart gaps (gaps used if only more than one container on the workspace)
+
+# Smart borders (draw borders around container only if it is not the only container on this workspace)
+# on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
+smart_borders on
+
+# Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+        bindsym $mod+g+i      mode "$mode_gaps_outer"
+        bindsym $mod+g+o      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_inner" {
+        bindsym plus  gaps inner current plus 5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+plus  gaps inner all plus 5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_outer" {
+        bindsym plus  gaps outer current plus 5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+
+
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# Set colors from Xresources
+# Change 'color7' and 'color2' to whatever colors you want i3 to use 
+# from the generated scheme.
+# NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
+# it fails to get colors from Xresources.
+set_from_resource $fg i3-gaps.color7 #f0f0f0
+set_from_resource $bg i3-gaps.color2 #f0f0f0
+
+# class                 border  backgr. text indicator child_border
+client.focused          $bg     $bg     $fg  $bg       $bg
+#client.focused_inactive $bg     $bg     $fg  $bg       $bg
+#client.unfocused        $bg     $bg     $fg  $bg       $bg
+client.urgent           $bg     $bg     $fg  $bg       $bg
+#client.placeholder      $bg     $bg     $fg  $bg       $bg
+
+client.background       $bg
+# window colors
+#                       border   background  text       indicator  child_border
+#client.focused          $green   $dark       $lighter   $yellow    $green
+#client.unfocused        $dark    $dark       $lighter   $yellow    $dark 
+#client.focused_inactive $dark    $dark       $lighter   $yellow    $dark 
+#client.urgent           $yellow  $yellow     $lighter   $green     $yellow
+
+#client.background       #ffffff
+
+
+#increase and decrease brightness of window
+set $brightnessup sh ~/.scripts/brightness_up.sh
+set $brightnessdown sh ~/.scripts/brightness_down.sh
+bindsym $mod+b+Up exec --no-startup-id $brightnessup
+bindsym $mod+b+Down exec --no-startup-id $brightnessdown
+
+# Switch workspace with n and p
+bindsym $mod+n workspace prev
+bindsym $mod+p workspace next
+
+# move focused workspace between monitors
+
+
+# Poly bar
+
+# Screen hot switch
+set $beside sh ~/.scripts/beside.sh
+set $hdmi   sh ~/.scripts/hdmi.sh
+#set $native ~/.scripts/native.sh
+#exec $hdmi
+exec --no-startup-id ~/.scripts/hotswitch.sh
+
+# Xrandr Switch
+bindsym $mod+F10 exec $beside
+bindsym $mod+F11 exec $hdmionly
+bindsym $mod+F12 exec $laptoponly
+
+# Background
+#exec --no-startup-id feh --bg-fill $bg
+set $background sh ~/.scripts/startup_background.sh
+exec --no-startup-id $background
+
+# Auto start
+
+#exec $(cat ~/.screenlayout/layout.sh)
+#move container to workspace $ws10
+#move container to workspace $1
+
+#exec thunderbird
+#exec "QT_IM_MODULE=ibus telegram-desktop" 
+# exec --no-startup-id blueman-applet
+# exec --no-startup-id nm-applet
+exec --no-startup-id calibre
+exec --no-startup-id notion-app
+exec --no-startup-id ibus-daemon -drx
+exec --no-startup-id lxsession
+# DMENU
+#bindsym $mod+d exec dmenu_run 
+bindsym Super exec dmenu_run
+
+
+#DMenu run by polybar-themes
+set $applauncher sh ~/.config/polybar/cuts/scripts/launcher.sh
+bindsym $mod+d exec $applauncher
+#bindsym Super exec $applauncher
+
+exec xset r rate 200 80
+#move workspace to output
+bindsym $mod+Shift+greater move workspace to output right
+bindsym $mod+Shift+less move workspace to output left
+#for_window [class=".*"] border pixel 0
+exec_always --no-startup-id ~/.config/polybar/launch.sh --cuts
+
+exec --no-startup-id i3-msg "workspace number 1"
