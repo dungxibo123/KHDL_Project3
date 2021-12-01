@@ -17,6 +17,7 @@ div.body {
 body.notebook_app {
  padding: 0;
  padding-right: 0px !important;
+ #background: #2C303C;
  background-image: url("pq1.png");
  overflow-y: hidden;
 }
@@ -3233,6 +3234,47 @@ div#maintoolbar {
 }
 #header-container {
  display: none !important;
+}
+/* Jupyter cell is in normal mode when code mirror */
+.edit_mode .cell.selected .CodeMirror-focused.cm-fat-cursor {
+  background-color: #2C303C !important;
+}
+
+
+         
+
+.dropdown-toggle {background-color: #485461;
+background-image: linear-gradient(315deg, #485461 0%, #28313b 74%);}
+.dropdown-toggle {
+	transition: 0.5s;
+	margin-left: 5px;
+	margin-right: 5px;
+	color: white;            
+	box-shadow: 0 0 10px #111;
+	border-radius: 3px;
+	display: block;
+}
+
+.dropdown-toggle:hover {
+	background-position: left right; /* change the direction of the change here */
+	color: #ddd;
+	text-decoration: none;
+}
+div#header {
+	background: transparent;
+}
+								
+
+/* Jupyter cell is in insert mode when code mirror */
+.edit_mode .cell.selected .CodeMirror-focused:not(.cm-fat-cursor) {
+  background-color: #323540 !important;
+}
+.tab-content{
+	background: #2C303C;
+}
+
+div.navbar-collapse {
+	background: transparent;
 }
 
 <script>

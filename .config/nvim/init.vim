@@ -68,6 +68,7 @@ Plug 'turbio/bracey.vim'
 
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'gko/vim-coloresque'
 
 " Unmanaged Plug (manually installed and updated)
 Plug '~/my-prototype-Plug'
