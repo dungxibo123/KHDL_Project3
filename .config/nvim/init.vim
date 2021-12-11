@@ -32,11 +32,12 @@ call plug#begin('~/.config/nvim/autoload')
 
 Plug 'Chiel92/vim-autoformat'
 Plug 'arcticicestudio/nord-vim'
+" Plug 'valloric/youcompleteme'
 Plug 'frazrepo/vim-rainbow'
 Plug 'dense-analysis/ale'
 Plug 'jcherven/jummidark.vim'
 Plug 'tpope/vim-commentary'
-Plug 'prettier/vim-prettier', {'do': 'yarn install'}
+" Plug 'prettier/vim-prettier', {'do': 'yarn install'}
 Plug 'Raimondi/delimitMate'
 Plug 'gregsexton/matchtag'
 Plug 'vim-airline/vim-airline'
@@ -69,7 +70,7 @@ Plug 'turbio/bracey.vim'
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'gko/vim-coloresque'
-
+Plug 'EdenEast/nightfox.nvim'
 " Unmanaged Plug (manually installed and updated)
 Plug '~/my-prototype-Plug'
 "Auto complete HTML Tags
@@ -83,11 +84,10 @@ Plug 'vundlevim/vundle.vim'
 
 Plug 'tpope/vim-fugitive'
 
-
-
+" Plug 'sts10/vim-pink-moon'
 
 "Color
-Plug 'drewtempelmeyer/palenight.vim'
+" Plug 'drewtempelmeyer/palenight.vim'
 call plug#end()
 
 
@@ -460,7 +460,8 @@ highlight clear LineNr
 highlight clear SignColumn
 highlight clear StatusLine
 
-
+" Prettier
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " thereis some thing 
 " Change Color when entering Insert Mode
 autocmd InsertEnter * set nocursorline
@@ -473,11 +474,14 @@ autocmd InsertLeave * set nocursorline
 "set noshowmode
 "set nocursorline
 
+
+
+
 " trasparent end
 autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
 set background=dark
-colorscheme palenight
-let g:airline_theme = "palenight"
+colorscheme nightfox
+" let g:airline_theme = "palenight"
 if (has("nvim"))
   "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
