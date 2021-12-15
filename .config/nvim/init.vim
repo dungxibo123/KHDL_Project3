@@ -53,11 +53,13 @@ Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
 " Using a non-default branch
 Plug 'ternjs/tern_for_vim', { 'do' : 'npm install'  }
+" Plug 'zyedidia/julialint.vim'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'scrooloose/nerdtree-project-plugin'
 "Vim commentor with gcc and gc
 Plug 'manasthakur/vim-commentor'
+Plug 'julialang/julia-vim'
 "
 " Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
 Plug 'fatih/vim-go', { 'tag': '*' }
@@ -72,6 +74,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'gko/vim-coloresque'
 Plug 'EdenEast/nightfox.nvim'
 " Unmanaged Plug (manually installed and updated)
+Plug 'benekastah/neomake'
 Plug '~/my-prototype-Plug'
 "Auto complete HTML Tags
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
