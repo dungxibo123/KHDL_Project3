@@ -1,11 +1,11 @@
-sw_volume: 98
+sw_volume: 94
 audio_device_state:1:pulse audio
 audio_device_state:1:Visualizer feed
 state: play
-current: 1
-time: 53.755000
+current: 5
+time: 7.276000
 random: 0
-repeat: 1
+repeat: 0
 single: 1
 consume: 0
 crossfade: 0
@@ -13,5 +13,9 @@ mixrampdb: 0.000000
 mixrampdelay: -1.000000
 playlist_begin
 0:HoaNoKhongMau1-HoaiLam-6281704.mp3
-1:HoaNoKhongMau1-HoaiLam-6281704.mp3
+1:y2mate.com - ĐÊM LAO XAO  Acoustic Ver   Bun  Orin Cover.mp3
+2:y2mate.com - Đen  Mười Năm ft Ngọc Linh MV Lộn Xộn 3.mp3
+3:y2mate.com - Đen  Trốn Tìm ft MTV band MV.mp3
+4:y2mate.com - Một Bước Yêu Vạn Dặm Đau  Mr Siro  Bun  Orin Cover.mp3
+5:y2mate.com - NÀNG THƠ  Acoustic ver   Bun  Orin Cover.mp3
 playlist_end

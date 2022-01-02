@@ -90,6 +90,7 @@ Plug 'tpope/vim-fugitive'
 " Plug 'sts10/vim-pink-moon'
 
 "Color
+Plug 'arcticicestudio/nord-vim'
 " Plug 'drewtempelmeyer/palenight.vim'
 call plug#end()
 
@@ -482,8 +483,7 @@ autocmd InsertLeave * set nocursorline
 
 " trasparent end
 autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
-set background=dark
-colorscheme nightfox
+" set background=dark
 " let g:airline_theme = "palenight"
 if (has("nvim"))
   "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
@@ -496,4 +496,5 @@ endif
 if (has("termguicolors"))
   set termguicolors
 endif
+colorscheme nord
 let g:palenight_terminal_italics=1
