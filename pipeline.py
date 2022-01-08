@@ -3,11 +3,17 @@ import preprocessing
 from preprocessing import *
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
+import pickle
+import numpy as np
 
 tokenizer = Tokenizer(num_words=15000, 
                       oov_token='<OOV>', 
                       filters='!"#$%&()*+,-./:;<=>?@[\\]^`{|}~\t\n')
 
+f = open('preprocess_document.txt', 'r')
+preprocess_data = f.read().split('\n')
+
+tokenizer.fit_on_texts(preprocess_data)
 
 
 SVMclf = pickle.load(open('Model/svm_rbf_kernel.pkl', 'rb'))
@@ -21,7 +27,10 @@ def pad_raw(raw):
     else:
         raw = raw[:1850]
     return raw
-        
+
+def normalization(array):
+    return ( array - np.min(array) ) / (np.max(array) - np.min(array))
+
 def predict_from_raw(model, raw, domain):
     raw = text_preprocess(raw)
     sequences_data = tokenizer.texts_to_sequences([raw])

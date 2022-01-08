@@ -195,8 +195,8 @@ def get_page_rank(domains):
             res_dict.update({res["response"][0]["domain"]: res["response"][0]["page_rank_decimal"]})
 
         #print(res.text)
-    with open("page_rank.json", "w", encoding="utf-8") as f:
-        json.dump(res_dict,f)
+    #with open("page_rank.json", "w", encoding="utf-8") as f:
+    #    json.dump(res_dict,f)
     print(res_dict)
     return res_dict
 
