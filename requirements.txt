@@ -3,5 +3,4 @@ underthesea
 tensorflow
 regex
 numpy
-pickle
 
